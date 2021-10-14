@@ -6,11 +6,13 @@ import Reto3_Ciclo3.modelo.Client;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author solecito
  */
+@Repository
 public class ClienteRepositorio {
   @Autowired
     private interfaceCliente crud;

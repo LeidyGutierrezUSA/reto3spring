@@ -39,8 +39,8 @@ public class ReservationWeb {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Reservation save(@RequestBody Reservation reservations) {
-        return servicios.save(reservations);
+    public Reservation save(@RequestBody Reservation reservation) {
+        return servicios.save(reservation);
     }
     
     

@@ -33,12 +33,12 @@ public class Reservation implements Serializable{
     private String status="created";
     
     @ManyToOne
-    @JoinColumn(name = "roomId")
+    @JoinColumn(name = "idRoom")
     @JsonIgnoreProperties("reservations")
     private Room room;
     
     @ManyToOne
-    @JoinColumn(name = "clienteId")
+    @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
     
@@ -102,5 +102,6 @@ public class Reservation implements Serializable{
         this.score = score;
     }
 
+   
    
 }

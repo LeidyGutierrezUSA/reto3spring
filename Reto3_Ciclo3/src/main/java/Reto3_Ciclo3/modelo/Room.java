@@ -31,7 +31,7 @@ public class Room implements Serializable {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name ="id")
+    @JoinColumn(name ="idcategoria")
     @JsonIgnoreProperties("room")
     private Categoria categoria;
     
@@ -42,7 +42,7 @@ public class Room implements Serializable {
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "room")
     @JsonIgnoreProperties({"room","client"})
     private List<Reservation>reservations;
-    
+
     public Integer getIdRoom() {
         return idRoom;
     }
@@ -90,6 +90,25 @@ public class Room implements Serializable {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public List<Message> getMessage() {
+        return message;
+    }
+
+    public void setMessage(List<Message> message) {
+        this.message = message;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+    
+   
+    
 
    
    

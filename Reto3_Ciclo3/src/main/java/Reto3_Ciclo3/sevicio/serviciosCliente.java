@@ -6,11 +6,13 @@ import Reto3_Ciclo3.repositorio.ClienteRepositorio;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author solecito
  */
+@Service
 public class serviciosCliente {
    @Autowired
     private ClienteRepositorio metodosCrud;
