@@ -6,38 +6,39 @@ package Reto3_Ciclo3.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.integration.IntegrationProperties.RSocket.Client;
+import org.aspectj.bridge.Message;
 /**
  * 
  * @author solecito
  */
 @Data
 @Entity
-@Table(name = "message")
-public class Message implements Serializable{
+@Table(name = "client")
+public class Client implements Serializable {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idMessage;
-    private String messageText;
+    private Integer idClient;
+    private String email;
+    private String password;
+    private String name;
+    private Integer age;
 
-    @ManyToOne
-    @JoinColumn(name="id")
-    @JsonIgnoreProperties({"messages","reservations"})
-    private Room room;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
+    @JsonIgnoreProperties({"client", "room"})
+    public List<Message>messages;
 
-    @ManyToOne
-    @JoinColumn(name="id")
-    @JsonIgnoreProperties({"messages","reservations"})
-    private Client client;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="client")
+    @JsonIgnoreProperties({"client", "room"})
+    public List<Reservation>reservations; 
 
-    
     
 }

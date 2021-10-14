@@ -8,13 +8,15 @@
 		<version>2.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>Reto3_Domingo</groupId>
-	<artifactId>Reto3_Domingo</artifactId>
+	<groupId>Reto3_Ciclo3</groupId>
+	<artifactId>Reto3_Ciclo3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Reto3_Ciclo3</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+	 <maven.compiler.source>1.8</maven.compiler.source>
+	 <maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -42,6 +44,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+	 <dependency>
+	  <groupId>org.projectlombok</groupId>
+	  <artifactId>lombok</artifactId>
+	  <version>1.18.20</version>
+	  <type>jar</type>
+	 </dependency>
 	</dependencies>
 
 	<build>

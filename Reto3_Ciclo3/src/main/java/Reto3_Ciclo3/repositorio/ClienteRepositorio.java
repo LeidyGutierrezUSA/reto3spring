@@ -2,27 +2,27 @@
 package Reto3_Ciclo3.repositorio;
 
 import Reto3_Ciclo3.interfaces.interfaceCliente;
-import Reto3_Ciclo3.modelo.Cliente;
+import Reto3_Ciclo3.modelo.Client;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
- * @author solesito
+ * @author solecito
  */
 public class ClienteRepositorio {
   @Autowired
     private interfaceCliente crud;
     
-    public List<Cliente> getAll(){
-        return (List<Cliente>) crud.findAll();
+    public List<Client> getAll(){
+        return (List<Client>) crud.findAll();
     }
-    public Optional <Cliente> getClient(int id){
+    public Optional <Client> getClient(int id){
         return crud.findById(id);
     }
     
-    public Cliente save(Cliente cliente){
-        return crud.save(cliente);
+    public Client save(Client client){
+        return crud.save(client);
     }  
 }

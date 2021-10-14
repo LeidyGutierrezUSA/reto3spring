@@ -5,8 +5,8 @@
  */
 package Reto3_Ciclo3.web;
 
-import Reto3_Ciclo3.modelo.Client;
-import Reto3_Ciclo3.sevicio.serviciosCliente;
+import Reto3_Ciclo3.modelo.Reservation;
+import Reto3_Ciclo3.sevicio.serviciosReservation;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,24 +24,24 @@ import org.springframework.web.bind.annotation.RestController;
  * @author solecito
  */
 @RestController
-@RequestMapping("/api/Client")
-public class ClienteWeb {
-
-    @Autowired
-    private serviciosCliente servicios;
+@RequestMapping("/api/Reservation")
+public class ReservationWeb {
+     @Autowired
+    private serviciosReservation servicios;
     @GetMapping("/all")
-    public List <Client> getClient(){
+    public List <Reservation> getReservation(){
         return servicios.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Client> getClient(@PathVariable("id") int idClient) {
-        return servicios.getClient(idClient);
+    public Optional<Reservation> getReservation(@PathVariable("id") int idReservation) {
+        return servicios.getReservation(idReservation);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client save(@RequestBody Client client) {
-        return servicios.save(client);
+    public Reservation save(@RequestBody Reservation reservations) {
+        return servicios.save(reservations);
     }
-     
+    
+    
 }

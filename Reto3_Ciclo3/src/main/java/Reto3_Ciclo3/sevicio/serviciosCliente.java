@@ -1,7 +1,7 @@
 
 package Reto3_Ciclo3.sevicio;
 
-import Reto3_Ciclo3.modelo.Cliente;
+import Reto3_Ciclo3.modelo.Client;
 import Reto3_Ciclo3.repositorio.ClienteRepositorio;
 import java.util.List;
 import java.util.Optional;
@@ -15,24 +15,24 @@ public class serviciosCliente {
    @Autowired
     private ClienteRepositorio metodosCrud;
     
-    public List<Cliente> getAll(){
+    public List<Client> getAll(){
          return metodosCrud.getAll();
     }
     
-    public Optional<Cliente> getClient(int idCliente){
-        return metodosCrud.getClient(idCliente);
+    public Optional<Client> getClient(int idClient){
+        return metodosCrud.getClient(idClient);
     }
     
     
-    public Cliente save(Cliente cliente){
-        if(cliente.getIdClient()==null){
-            return metodosCrud.save(cliente);
+    public Client save(Client client){
+        if(client.getIdClient()==null){
+            return metodosCrud.save(client);
         }else{
-            Optional<Cliente> evt=metodosCrud.getClient(cliente.getIdClient());
+            Optional<Client> evt=metodosCrud.getClient(client.getIdClient());
             if(evt.isEmpty()){
-            return metodosCrud.save(cliente);
+            return metodosCrud.save(client);
             }else{
-                return cliente;
+                return client;
             }
         
         

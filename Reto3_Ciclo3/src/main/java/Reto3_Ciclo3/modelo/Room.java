@@ -3,12 +3,16 @@ package Reto3_Ciclo3.modelo;
 
 import Reto3_Ciclo3.modelo.Categoria;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 /**
  * 
@@ -16,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "room")
-public class Room {
+public class Room implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
@@ -28,9 +32,17 @@ public class Room {
 
     @ManyToOne
     @JoinColumn(name ="id")
-    @JsonIgnoreProperties("categoria")
+    @JsonIgnoreProperties("room")
     private Categoria categoria;
-
+    
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "room")
+    @JsonIgnoreProperties({"room","client"})
+    private List<Message>message;
+    
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "room")
+    @JsonIgnoreProperties({"room","client"})
+    private List<Reservation>reservations;
+    
     public Integer getIdRoom() {
         return idRoom;
     }

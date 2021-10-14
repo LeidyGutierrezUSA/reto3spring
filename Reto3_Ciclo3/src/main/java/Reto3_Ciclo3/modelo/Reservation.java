@@ -6,6 +6,7 @@
 package Reto3_Ciclo3.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -21,9 +22,9 @@ import javax.persistence.Table;
  * 
  * @author solecito
  */
-
-@Table(name = "reservation")
-public class Reservation {
+@Entity
+@Table(name = "reservations")
+public class Reservation implements Serializable{
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
@@ -36,7 +37,12 @@ public class Reservation {
     @JsonIgnoreProperties("reservations")
     private Room room;
     
-    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservation")
+    @ManyToOne
+    @JoinColumn(name = "clienteId")
+    @JsonIgnoreProperties({"reservations","messages"})
+    private Client client;
+    
+    @OneToOne
     @JsonIgnoreProperties("reservation")
     private Score score;
 
@@ -80,6 +86,14 @@ public class Reservation {
         this.room = room;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     public Score getScore() {
         return score;
     }
@@ -87,4 +101,6 @@ public class Reservation {
     public void setScore(Score score) {
         this.score = score;
     }
+
+   
 }

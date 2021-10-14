@@ -2,6 +2,7 @@
 package Reto3_Ciclo3.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,14 +17,14 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "categoria")
-public class Categoria {
+public class Categoria implements Serializable {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Integer idcategoria;
      private String name;
      private String description;
      
-     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="categoria")
+     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "categoria")
      @JsonIgnoreProperties("categoria")
      private List<Room> room;
 
