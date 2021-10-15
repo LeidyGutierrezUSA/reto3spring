@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.aspectj.bridge.Message;
 
 /**
  *
@@ -33,9 +32,9 @@ public class Client implements Serializable {
     private String name;
     private Integer age;
 
-//    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-//    @JsonIgnoreProperties("client")
-//    public List<Message> messages;
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
+    @JsonIgnoreProperties("client")
+    public List<Message> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties({"client", "room"})

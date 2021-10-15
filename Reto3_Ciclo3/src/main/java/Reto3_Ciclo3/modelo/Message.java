@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.springframework.boot.autoconfigure.integration.IntegrationProperties.RSocket.Client;
+
 /**
  * 
  * @author solecito
@@ -32,10 +32,10 @@ public class Message implements Serializable{
     @JsonIgnoreProperties({"messages","reservations"})
     private Room room;
 
-//    @ManyToOne
-//    @JoinColumn(name="idClient")
-//    @JsonIgnoreProperties({"messages","reservations"})
-//    private Client client;
+    @ManyToOne
+    @JoinColumn(name="clientId")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Client client;
 
     public Integer getIdMessage() {
         return idMessage;
