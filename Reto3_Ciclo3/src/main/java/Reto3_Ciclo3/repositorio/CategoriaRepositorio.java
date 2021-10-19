@@ -24,8 +24,10 @@ public class CategoriaRepositorio {
         return crud.findById(id);
     }
     
-    public Categoria save(Categoria categoria){
-        return crud.save(categoria);
+    public Categoria save(Categoria category){
+        return crud.save(category);
     }
-    
+    public void delete(Categoria category){
+         crud.delete(category);
+}
 }

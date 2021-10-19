@@ -24,31 +24,31 @@ public class Room implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
-    private Integer idRoom;
+    private Integer id;
     private String name;
-    private Integer stars;
     private String hotel;
+    private Integer stars;
     private String description;
 
     @ManyToOne
     @JoinColumn(name ="idcategoria")
     @JsonIgnoreProperties("room")
-    private Categoria categoria;
+    private Categoria category;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "room")
     @JsonIgnoreProperties({"room","client"})
-    private List<Message>message;
+    private List<Message>messages;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "room")
     @JsonIgnoreProperties({"room","client"})
     private List<Reservation>reservations;
 
-    public Integer getIdRoom() {
-        return idRoom;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdRoom(Integer idRoom) {
-        this.idRoom = idRoom;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -59,20 +59,20 @@ public class Room implements Serializable {
         this.name = name;
     }
 
-    public Integer getStars() {
-        return stars;
-    }
-
-    public void setStars(Integer stars) {
-        this.stars = stars;
-    }
-
     public String getHotel() {
         return hotel;
     }
 
     public void setHotel(String hotel) {
         this.hotel = hotel;
+    }
+
+    public Integer getStars() {
+        return stars;
+    }
+
+    public void setStars(Integer stars) {
+        this.stars = stars;
     }
 
     public String getDescription() {
@@ -83,20 +83,20 @@ public class Room implements Serializable {
         this.description = description;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Categoria getCategory() {
+        return category;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategory(Categoria category) {
+        this.category = category;
     }
 
-    public List<Message> getMessage() {
-        return message;
+    public List<Message> getMessages() {
+        return messages;
     }
 
-    public void setMessage(List<Message> message) {
-        this.message = message;
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 
     public List<Reservation> getReservations() {
@@ -106,6 +106,14 @@ public class Room implements Serializable {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
+
+  
+   
+
+    
+
+    
+    
     
    
     

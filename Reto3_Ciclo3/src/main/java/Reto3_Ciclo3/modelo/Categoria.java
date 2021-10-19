@@ -16,24 +16,24 @@ import javax.persistence.Table;
  * @author solecito
  */
 @Entity
-@Table(name = "categoria")
+@Table(name="categoria")
 public class Categoria implements Serializable {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Integer idcategoria;
+     private Integer id;
      private String name;
      private String description;
      
-     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "categoria")
-     @JsonIgnoreProperties("categoria")
+     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="category")
+     @JsonIgnoreProperties("category")
      private List<Room> room;
 
-    public Integer getIdcategoria() {
-        return idcategoria;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdcategoria(Integer idcategoria) {
-        this.idcategoria = idcategoria;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -59,6 +59,13 @@ public class Categoria implements Serializable {
     public void setRoom(List<Room> room) {
         this.room = room;
     }
+
+   
+
+   
+   
+
+   
      
      
      

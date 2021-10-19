@@ -28,12 +28,12 @@ public class Message implements Serializable{
     private String messageText;
 
     @ManyToOne
-    @JoinColumn(name="idRoom")
+    @JoinColumn(name="roomId")
     @JsonIgnoreProperties({"messages","reservations"})
     private Room room;
 
     @ManyToOne
-    @JoinColumn(name="clientId")
+    @JoinColumn(name="lientId")
     @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
 
@@ -61,15 +61,16 @@ public class Message implements Serializable{
         this.room = room;
     }
 
-//    public Client getClient() {
-//        return client;
-//    }
-//
-//    public void setClient(Client client) {
-//        this.client = client;
-//    }
+    public Client getClient() {
+        return client;
+    }
 
+    public void setClient(Client client) {
+        this.client = client;
+    }
     
     
+    
+
    
 }

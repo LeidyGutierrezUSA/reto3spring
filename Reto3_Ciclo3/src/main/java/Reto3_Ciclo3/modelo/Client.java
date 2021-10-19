@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 /**
  *
  * @author solecito
@@ -33,7 +34,7 @@ public class Client implements Serializable {
     private Integer age;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-    @JsonIgnoreProperties("client")
+    @JsonIgnoreProperties({"client", "room"})
     public List<Message> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
@@ -80,13 +81,14 @@ public class Client implements Serializable {
         this.age = age;
     }
 
-//    public List<Message> getMessages() {
-//        return messages;
-//    }
-//
-//    public void setMessages(List<Message> messages) {
-//        this.messages = messages;
-//    }
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
     public List<Reservation> getReservations() {
         return reservations;
     }
@@ -95,4 +97,6 @@ public class Client implements Serializable {
         this.reservations = reservations;
     }
 
+    
+    
 }

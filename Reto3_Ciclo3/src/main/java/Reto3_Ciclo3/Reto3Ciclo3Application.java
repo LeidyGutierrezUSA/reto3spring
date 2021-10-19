@@ -3,11 +3,11 @@ package Reto3_Ciclo3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 
 
-@EntityScan(basePackages = {"Reto3_ciclo3.modelo"})
+
+
 @SpringBootApplication
 
 public class Reto3Ciclo3Application {

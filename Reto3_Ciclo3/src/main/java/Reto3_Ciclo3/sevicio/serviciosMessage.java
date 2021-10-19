@@ -45,5 +45,28 @@ public class serviciosMessage {
         }
     
     }
-    
+     public Message update(Message message){
+        if(message.getIdMessage()!=null){
+            Optional<Message> evento=metodosCrud.getMessage(message.getIdMessage());
+            if(evento.isEmpty()){
+            if(message.getMessageText()!=null){
+                    evento.get().setMessageText(message.getMessageText());
+                }
+                metodosCrud.save(evento.get());
+                return evento.get();
+            }else{
+                return message;
+            }
+        }else{
+            return message;
+        }
+    }
+
+    public boolean deleteMessage(int idMessage) {
+        Boolean delect = getMessage(idMessage).map(message -> {
+            metodosCrud.delete(message);
+            return true;
+        }).orElse(false);
+        return delect;
+    }
 }

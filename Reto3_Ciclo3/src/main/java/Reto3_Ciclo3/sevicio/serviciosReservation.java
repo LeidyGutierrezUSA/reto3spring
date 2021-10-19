@@ -18,32 +18,62 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class serviciosReservation {
-     @Autowired
+
+    @Autowired
     private ReservationRepositorio metodosCrud;
-    
-    public List<Reservation> getAll(){
-         return metodosCrud.getAll();
+
+    public List<Reservation> getAll() {
+        return metodosCrud.getAll();
     }
-    
-    public Optional<Reservation> getReservation(int idReservation){
+
+    public Optional<Reservation> getReservation(int idReservation) {
         return metodosCrud.getReservation(idReservation);
     }
-    
-    
-    public Reservation save(Reservation reservations){
-        if(reservations.getIdReservation()==null){
+
+    public Reservation save(Reservation reservations) {
+        if (reservations.getIdReservation() == null) {
             return metodosCrud.save(reservations);
-        }else{
-            Optional<Reservation> evt=metodosCrud.getReservation(reservations.getIdReservation());
-            if(evt.isEmpty()){
-            return metodosCrud.save(reservations);
-            }else{
+        } else {
+            Optional<Reservation> evt = metodosCrud.getReservation(reservations.getIdReservation());
+            if (evt.isEmpty()) {
+                return metodosCrud.save(reservations);
+            } else {
                 return reservations;
             }
-        
-        
+
         }
-    
+
     }
-    
+
+    public Reservation update(Reservation reservation) {
+        if (reservation.getIdReservation() != null) {
+            Optional<Reservation> evento = metodosCrud.getReservation(reservation.getIdReservation());
+            if (!evento.isEmpty()) {
+
+                if (reservation.getStartDate() != null) {
+                    evento.get().setStartDate(reservation.getStartDate());
+                }
+                if (reservation.getDevolutionDate() != null) {
+                    evento.get().setDevolutionDate(reservation.getDevolutionDate());
+                }
+                if (reservation.getStatus() != null) {
+                    evento.get().setStatus(reservation.getStatus());
+                }
+                metodosCrud.save(evento.get());
+                return evento.get();
+            } else {
+                return reservation;
+            }
+        } else {
+            return reservation;
+        }
+    }
+
+    public boolean deleteReservation(int idReservation) {
+        Boolean delect = getReservation(idReservation).map(reservation -> {
+            metodosCrud.delete(reservation);
+            return true;
+        }).orElse(false);
+        return delect;
+    }
 }

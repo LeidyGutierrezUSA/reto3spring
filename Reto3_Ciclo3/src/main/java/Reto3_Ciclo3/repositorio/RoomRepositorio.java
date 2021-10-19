@@ -27,5 +27,7 @@ public class RoomRepositorio {
     public Room save(Room room){
         return crud.save(room);
     }
-    
+     public void delete(Room room){
+        crud.delete(room);
+    }
 }
